@@ -1,0 +1,18 @@
+.login__logo {
+    object-fit: contain;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.login {
+    /* This code pulls everything into center */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+
+}

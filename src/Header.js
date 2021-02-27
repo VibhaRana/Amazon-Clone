@@ -12,7 +12,7 @@ function Header() {
   const[{basket}] = useStateValue()
   console.log(basket)
     return (
-        <nav className = 'header'>
+        <div className = 'header'>
             {/* logo on left */}
             <Link to = '/'>
             <img className = 'header__logo' src = 'http://pngimg.com/uploads/amazon/amazon_PNG11.png' />
@@ -59,7 +59,7 @@ function Header() {
             </div>
            
             {/* Basket icon with number */}
-        </nav>
+        </div>
     )
 }
 
