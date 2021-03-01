@@ -4,13 +4,21 @@ import { Link } from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/Search'
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import {useStateValue} from './StateProvider'
-
+import { auth } from './firebase'
 
 function Header() {
   // Below is what we usually write or basic syntax. But our state is = to basket[], so make it easy and destruct its value like
   //const[state, dispatch] = useStateValue()
-  const[{basket}] = useStateValue()
+  const[{basket, user}, dispatch] = useStateValue()
   console.log(basket)
+
+     const handleAuthentication = () => {
+       //functionality to logout
+       if(user) {
+         auth.signOut()
+       }
+     }
+     
     return (
         <div className = 'header'>
             {/* logo on left */}
@@ -27,10 +35,10 @@ function Header() {
             {/* 3 links */}
             <div className = 'header__nav'>
             {/*FirstLink */}
-            <Link to = '/login' className = 'header__link'>
-             <div className = 'header__option'>
-               <span className = 'header__optionLineOne'>Hello </span>
-               <span className = 'header__optionLineTwo'>Login</span>
+            <Link to = {!user && '/login'} className = 'header__link'>
+             <div onClick = {handleAuthentication} className = 'header__option'>
+               <span className = 'header__optionLineOne'>Hello {!user ? 'Guest' : user.email} </span>
+               <span className = 'header__optionLineTwo'>{user ? 'Sign Out' : 'Sign In'}</span>
              </div> 
             </Link>
                 {/* Second Link */}

@@ -2,7 +2,10 @@
 
 
 export const initialState = {
-    basket : []
+    // On initial state , basket is empty
+    basket : [],
+    // On initial state, no user is logged in
+    user: null
 } 
     
    
@@ -43,6 +46,12 @@ const reducer = (state, action) => {
          return{
              ...state,
              basket: newBasket
+         }
+
+         case  'SET_USER' : 
+         return {
+             ...state,
+             user: action.user
          }
      
         default:
